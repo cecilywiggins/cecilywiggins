@@ -4,39 +4,54 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cecily Wiggins — Producer & Creative Director</title>
-<meta name="description" content="Producer, post-production, and multicultural creative director based in Los Angeles. Portfolio and contact.">
+<meta name="description" content="Los Angeles producer and creative director building film, brand, and social work with an AI-native production pipeline. Credits include Nordstrom, the American Heart Association, and The Major Look Productions.">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Cecily Wiggins — Producer">
-<meta property="og:description" content="Producer · Post-Production · Multicultural Campaigns">
+<meta property="og:title" content="Cecily Wiggins — Producer & Creative Director">
+<meta property="og:description" content="Producer · Creative Director · AI-native production. Los Angeles.">
 <meta property="og:type" content="website">
 
-<!-- Fonts: Editorial serif display + clean grotesk body -->
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- Fonts: Fraunces display serif + Inter grotesk body (existing brand identity) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300;9..144,400;9..144,600;9..144,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
   :root {
     --bg: #0e0d0c;
     --bg-2: #161412;
     --ink: #f5f1ea;
-    --ink-dim: #a8a39c;
-    --ink-faint: #5a544d;
-    --accent: #d97757;          /* warm terracotta — Anthropic-adjacent but distinct */
+    --ink-dim: #b8b2aa;        /* bumped for AA body contrast on dark */
+    --ink-faint: #7d766d;      /* labels only, never body */
+    --accent: #d97757;         /* warm terracotta */
     --accent-glow: #f4a481;
     --rule: rgba(245, 241, 234, 0.12);
+    --rule-soft: rgba(245, 241, 234, 0.07);
+
+    /* semantic z-index scale */
+    --z-grain: 100;
+    --z-content: 1;
+    --z-atmos: 0;
+
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
 
   html, body {
     background: var(--bg);
     color: var(--ink);
     font-family: 'Inter', -apple-system, sans-serif;
     overflow-x: hidden;
-    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
+
+  ::selection { background: var(--accent); color: #1a120e; }
 
   /* Grain overlay */
   body::before {
@@ -44,9 +59,9 @@
     position: fixed;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.06;
+    opacity: 0.055;
     pointer-events: none;
-    z-index: 100;
+    z-index: var(--z-grain);
     mix-blend-mode: overlay;
   }
 
@@ -56,389 +71,560 @@
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 40% at 80% 20%, rgba(217, 119, 87, 0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(217, 119, 87, 0.08) 0%, transparent 55%);
+      radial-gradient(ellipse 60% 40% at 82% 8%, rgba(217, 119, 87, 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 45% at 12% 92%, rgba(217, 119, 87, 0.07) 0%, transparent 55%);
     pointer-events: none;
-    z-index: 0;
+    z-index: var(--z-atmos);
   }
 
-  .container {
+  .wrap {
     position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
-    max-width: 1400px;
+    z-index: var(--z-content);
+    max-width: 1240px;
     margin: 0 auto;
+    padding: 0 clamp(1.25rem, 5vw, 4rem);
   }
 
-  /* TOP BAR */
+  /* ---------- TOP BAR ---------- */
   .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
+    padding: 2.25rem 0 1rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--ink-dim);
-    opacity: 0;
-    animation: fade-in 1.2s 0.2s ease-out forwards;
   }
 
   .monogram {
     font-family: 'Fraunces', serif;
     font-weight: 900;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     letter-spacing: 0;
     color: var(--ink);
     text-transform: none;
     font-variation-settings: "SOFT" 100, "WONK" 1;
+    text-decoration: none;
   }
 
-  .status {
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-  }
+  .status { display: flex; align-items: center; gap: 0.55rem; }
 
   .status-dot {
-    width: 7px;
-    height: 7px;
+    width: 7px; height: 7px;
     border-radius: 50%;
     background: var(--accent);
     box-shadow: 0 0 12px var(--accent-glow);
-    animation: pulse 2.4s ease-in-out infinite;
+    animation: pulse 2.6s ease-in-out infinite;
   }
 
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.2); }
+    50% { opacity: 0.55; transform: scale(1.25); }
   }
 
-  /* HERO */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 4rem 0;
-    position: relative;
-  }
+  /* ---------- HERO ---------- */
+  .hero { padding: clamp(3rem, 9vw, 7rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
 
-  .eyebrow {
-    font-size: 0.78rem;
-    letter-spacing: 0.32em;
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: rise 1s 0.5s ease-out forwards;
+    margin-bottom: 2rem;
     display: flex;
     align-items: center;
     gap: 1rem;
   }
-
-  .eyebrow::before {
-    content: "";
-    width: 32px;
-    height: 1px;
-    background: var(--accent);
-  }
+  .kicker::before { content: ""; width: 34px; height: 1px; background: var(--accent); }
 
   .name {
     font-family: 'Fraunces', serif;
     font-weight: 300;
     font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
-    font-size: clamp(3rem, 10vw, 8rem);
-    line-height: 1.02;
-    letter-spacing: -0.035em;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
+    font-size: clamp(3.1rem, 11vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.038em;
+    text-wrap: balance;
   }
+  .name .line { display: block; overflow: hidden; padding: 0.1em 0.05em; margin: -0.1em -0.05em; }
+  .name .inner { display: inline-block; }
+  .js .name .inner { transform: translateY(112%); }
+  .js .name .inner { animation: rise-up 1.05s var(--ease-out-expo) forwards; }
+  .name .l1 .inner { animation-delay: 0.15s; }
+  .name .l2 .inner { animation-delay: 0.28s; font-style: italic; font-weight: 400; color: var(--accent); }
+  @keyframes rise-up { to { transform: translateY(0); } }
 
-  .name .first,
-  .name .last {
-    display: block;
-    overflow: hidden;
-    padding: 0.12em 0.05em;
-    margin: -0.12em -0.05em;
-  }
-
-  .name .inner {
-    display: inline-block;
-    transform: translateY(110%);
-    animation: rise-up 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .name .first .inner { animation-delay: 0.6s; }
-  .name .last .inner { animation-delay: 0.75s; font-style: italic; font-weight: 400; color: var(--accent); }
-
-  @keyframes rise-up {
-    to { transform: translateY(0); }
-  }
-
-  .tagline {
+  .lede {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
-    font-size: clamp(1rem, 1.6vw, 1.35rem);
-    color: var(--ink-dim);
-    max-width: 620px;
-    line-height: 1.5;
-    margin-top: 2rem;
-    opacity: 0;
-    animation: rise 1s 1.2s ease-out forwards;
+    font-size: clamp(1.12rem, 1.9vw, 1.5rem);
+    color: var(--ink);
+    max-width: 30ch;
+    line-height: 1.42;
+    margin-top: 2.2rem;
   }
-
-  .tagline em {
+  .lede strong { font-weight: 500; }
+  .lede em {
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-weight: 400;
-    color: var(--ink);
+    color: var(--accent);
   }
 
-  /* DIVIDER LABEL */
-  .roles {
+  .sub {
+    font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+    color: var(--ink-dim);
+    max-width: 58ch;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+  }
+
+  /* discipline row */
+  .disciplines {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem 2.5rem;
-    margin-top: 3.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--rule);
-    opacity: 0;
-    animation: rise 1s 1.4s ease-out forwards;
+    gap: 0.6rem 0.75rem;
+    margin-top: 2.75rem;
   }
-
-  .role {
+  .chip {
     font-size: 0.72rem;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--ink-dim);
+    border: 1px solid var(--rule);
+    border-radius: 100px;
+    padding: 0.5rem 0.9rem;
+  }
+  .chip.lit { color: var(--ink); border-color: rgba(217,119,87,0.5); }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-top: 1px solid var(--rule-soft); }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .sec-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .sec-title em { font-style: italic; color: var(--accent); }
+  .sec-note {
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink-faint);
     font-weight: 500;
   }
 
-  .role.lit { color: var(--ink); }
+  /* ---------- AI PIPELINE ---------- */
+  .pipeline-intro {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    max-width: 24ch;
+    text-wrap: balance;
+    margin-bottom: 3rem;
+  }
+  .pipeline-intro em { font-style: italic; color: var(--accent); }
 
-  /* LINKS — the main event */
-  .links {
+  .caps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
     gap: 0;
-    margin-top: 5rem;
     border-top: 1px solid var(--rule);
-    opacity: 0;
-    animation: rise 1s 1.6s ease-out forwards;
+  }
+  .cap {
+    padding: 1.75rem 1.5rem 1.75rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .cap-k {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+  .cap-t {
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  .cap-d { font-size: 0.92rem; color: var(--ink-dim); line-height: 1.5; }
+
+  /* ---------- SELECTED WORK ---------- */
+  .work-list { display: flex; flex-direction: column; }
+  .work {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr) auto;
+    gap: 0.4rem 2rem;
+    align-items: baseline;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .work:last-child { border-bottom: 1px solid var(--rule); }
+  .work-role {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+  .work-role em { font-style: italic; color: var(--accent); }
+  .work-org { font-size: 0.98rem; color: var(--ink-dim); line-height: 1.45; }
+  .work-org b { color: var(--ink); font-weight: 500; }
+  .work-year {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    text-align: right;
+  }
+  @media (hover: hover) {
+    .work:hover .work-role { transform: translateX(8px); }
+  }
+  @media (max-width: 680px) {
+    .work { grid-template-columns: 1fr auto; gap: 0.35rem 1rem; }
+    .work-year { grid-column: 2; grid-row: 1; }
+    .work-org { grid-column: 1 / -1; }
   }
 
+  /* ---------- CLIENTS / TALENT ---------- */
+  .roster { display: grid; gap: 2.5rem; }
+  .roster-group .roster-label {
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .roster-names {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .roster-names .dot { color: var(--accent); padding: 0 0.35em; }
+
+  /* ---------- CONTACT ---------- */
+  .contact { border-top: 1px solid var(--rule); }
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
   .link {
     display: block;
-    padding: 2.25rem 2rem 2.25rem 0;
+    padding: 2.1rem 1.5rem 2.1rem 0;
     border-bottom: 1px solid var(--rule);
     border-right: 1px solid var(--rule);
     text-decoration: none;
     color: var(--ink);
     position: relative;
-    transition: padding 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.6s ease;
     overflow: hidden;
+    transition: background 0.5s ease;
   }
-
   .link:last-child { border-right: none; }
-
-  @media (max-width: 900px) {
-    .link { border-right: none; }
-    .link:last-child { border-bottom: none; }
-  }
-
+  @media (max-width: 900px) { .link { border-right: none; } .link:last-child { border-bottom: none; } }
   .link::before {
     content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(217, 119, 87, 0.06), transparent 70%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(217,119,87,0.08), transparent 70%);
+    opacity: 0; transition: opacity 0.5s ease;
   }
-
-  .link:hover { padding-left: 1.5rem; }
-  .link:hover::before { opacity: 1; }
-
-  .link-num {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 0.85rem;
-    color: var(--ink-faint);
-    margin-bottom: 1rem;
-    display: block;
-    transition: color 0.4s ease;
-  }
-  .link:hover .link-num { color: var(--accent); }
-
-  .link-title {
+  .link:focus-visible { outline: none; }
+  .link:hover::before, .link:focus-visible::before { opacity: 1; }
+  .link-t {
     font-family: 'Fraunces', serif;
     font-weight: 400;
     font-size: clamp(1.5rem, 2.4vw, 2rem);
     letter-spacing: -0.02em;
-    line-height: 1.05;
-    margin-bottom: 0.5rem;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 0.6rem;
+    transition: transform 0.5s var(--ease-out-expo);
   }
-
-  .link:hover .link-title { transform: translateX(4px); }
-
-  .link-title em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
+  .link-t em { font-style: italic; color: var(--accent); }
+  .link:hover .link-t, .link:focus-visible .link-t { transform: translateX(10px); }
   .link-meta {
     font-size: 0.78rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink-dim);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1.25rem;
+    display: flex; align-items: center; justify-content: space-between;
   }
-
   .arrow {
-    display: inline-block;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    transition: transform 0.5s var(--ease-out-expo);
   }
+  .link:hover .arrow, .link:focus-visible .arrow { transform: translateX(8px); color: var(--accent); }
 
-  .link:hover .arrow { transform: translateX(8px); }
-
-  /* FOOTER */
+  /* ---------- FOOTER ---------- */
   .footer {
-    margin-top: 5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
+    padding: 2.5rem 0 3rem;
+    border-top: 1px solid var(--rule-soft);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 0.75rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ink-faint);
-    opacity: 0;
-    animation: fade-in 1s 2s ease-out forwards;
   }
-
-  .footer-note {
+  .footer .note {
     font-family: 'Fraunces', serif;
     font-style: italic;
     text-transform: none;
     letter-spacing: 0;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--ink-dim);
   }
 
-  @keyframes fade-in {
-    to { opacity: 1; }
-  }
+  /* ---------- REVEAL (visible by default; JS enhances, never gates) ---------- */
+  .reveal { opacity: 1; }
+  .reveal.pre { opacity: 0; transform: translateY(18px); }
+  .reveal.in { opacity: 1; transform: none; transition: opacity 0.9s ease, transform 1s var(--ease-out-expo); }
 
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  /* top-of-page load fades (only where JS present) */
+  .js .fade { opacity: 0; animation: fade-rise 1s ease-out forwards; }
+  .kicker.fade { animation-delay: 0.05s; }
+  .lede.fade { animation-delay: 0.55s; }
+  .sub.fade { animation-delay: 0.7s; }
+  .disciplines.fade { animation-delay: 0.85s; }
+  .topbar.fade { animation-delay: 0.1s; }
+  @keyframes fade-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 
-  /* Mobile tightening */
-  @media (max-width: 640px) {
-    .container { padding: 1.5rem 1.25rem; }
-    .hero { padding: 2rem 0; }
-    .roles { gap: 0.8rem 1.5rem; margin-top: 2.5rem; }
-    .links { margin-top: 3rem; }
-    .link { padding: 1.75rem 1rem 1.75rem 0; }
-    .footer { margin-top: 3rem; flex-direction: column; align-items: flex-start; }
-  }
-
-  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-    .name .inner { transform: translateY(0); }
+    .js .name .inner,
+    .reveal.pre,
+    .js .fade { opacity: 1 !important; transform: none !important; }
   }
 </style>
 </head>
 <body>
 
-<div class="container">
-
   <!-- TOP BAR -->
-  <header class="topbar">
-    <div class="monogram">CW.</div>
-    <div class="status">
-      <span class="status-dot"></span>
-      <span>Available for Producing Work</span>
+  <div class="wrap">
+    <header class="topbar fade">
+      <a class="monogram" href="#top">CW.</a>
+      <div class="status">
+        <span class="status-dot"></span>
+        <span>Available · LA &amp; Remote</span>
+      </div>
+    </header>
+  </div>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <div class="wrap">
+      <section class="hero" style="border-top:none;padding-top:clamp(2rem,6vw,4rem);">
+        <p class="kicker fade">Producer · Creative Director · Los Angeles</p>
+
+        <h1 class="name">
+          <span class="line l1"><span class="inner">Cecily</span></span>
+          <span class="line l2"><span class="inner">Wiggins.</span></span>
+        </h1>
+
+        <p class="lede fade">
+          I produce film, brand, and social work — and build the <em>AI-native pipelines</em> that let a small team move like a big one.
+        </p>
+
+        <p class="sub fade">
+          Two decades across production, marketing, and design, from Nordstrom shoots to national campaigns. Now folding generative tools into every stage of the work — pre-viz, post, and the systems in between.
+        </p>
+
+        <div class="disciplines fade">
+          <span class="chip lit">Production</span>
+          <span class="chip lit">Creative Direction</span>
+          <span class="chip lit">AI Pipelines</span>
+          <span class="chip">Post &amp; Editing</span>
+          <span class="chip">Brand Campaigns</span>
+          <span class="chip">Content &amp; Social</span>
+        </div>
+      </section>
     </div>
-  </header>
 
-  <!-- HERO -->
-  <main class="hero">
-    <div class="eyebrow">Producer · Los Angeles</div>
+    <!-- AI PIPELINE -->
+    <div class="wrap">
+      <section aria-labelledby="edge">
+        <div class="sec-head">
+          <h2 class="sec-title" id="edge">The <em>AI-native</em> pipeline</h2>
+          <span class="sec-note">What's new</span>
+        </div>
 
-    <h1 class="name">
-      <span class="first"><span class="inner">Cecily</span></span>
-      <span class="last"><span class="inner">Wiggins.</span></span>
-    </h1>
+        <p class="pipeline-intro reveal">
+          Generative tools don't replace a crew. In the right hands they let one move <em>faster, cheaper, and stranger</em> than the old way allowed.
+        </p>
 
-    <p class="tagline">
-      Independent producer working at the intersection of <em>post-production</em>, <em>multicultural campaigns</em>, and <em>AI-driven creative</em>. Currently producing at Orphan Outcast Productions. Previously HARTBEAT.
-    </p>
-
-    <div class="roles">
-      <span class="role lit">Production</span>
-      <span class="role lit">Post-Production</span>
-      <span class="role">Multi-Market Campaigns</span>
-      <span class="role">Creative Direction</span>
-      <span class="role">AI Pipelines</span>
+        <div class="caps">
+          <div class="cap reveal">
+            <span class="cap-k">i.</span>
+            <div class="cap-t">Concept &amp; pre-viz</div>
+            <p class="cap-d">Mood, look, and boards generated in hours with MidJourney and Runway, so a pitch arrives already seeing itself.</p>
+          </div>
+          <div class="cap reveal">
+            <span class="cap-k">ii.</span>
+            <div class="cap-t">AI video &amp; post</div>
+            <p class="cap-d">Generative fill, cleanup, and motion inside a Premiere / After Effects workflow. Real editorial craft, accelerated.</p>
+          </div>
+          <div class="cap reveal">
+            <span class="cap-k">iii.</span>
+            <div class="cap-t">Custom GPTs &amp; agents</div>
+            <p class="cap-d">Bespoke tools for writers' rooms and marketing teams, trained on the brief, working while you sleep.</p>
+          </div>
+          <div class="cap reveal">
+            <span class="cap-k">iv.</span>
+            <div class="cap-t">Campaign systems</div>
+            <p class="cap-d">Copy, variations, and content at scale — AI-assisted, human-directed, on-brand every time.</p>
+          </div>
+        </div>
+      </section>
     </div>
 
-    <!-- LINKS -->
-    <nav class="links" aria-label="Primary contact and portfolio">
-
-      <a class="link" href="https://cecilywiggins.my.canva.site/portfolio" target="_blank" rel="noopener">
-        <span class="link-num">01 / Work</span>
-        <h2 class="link-title"><em>Portfolio</em></h2>
-        <div class="link-meta">
-          <span>Canva · Selected Work</span>
-          <span class="arrow">→</span>
+    <!-- SELECTED WORK -->
+    <div class="wrap">
+      <section aria-labelledby="work">
+        <div class="sec-head">
+          <h2 class="sec-title" id="work">Selected <em>work</em></h2>
+          <span class="sec-note">Production · 2004–now</span>
         </div>
-      </a>
 
-      <a class="link" href="https://www.linkedin.com/in/cecilywiggins" target="_blank" rel="noopener">
-        <span class="link-num">02 / Profile</span>
-        <h2 class="link-title"><em>LinkedIn</em></h2>
-        <div class="link-meta">
-          <span>Experience · Network</span>
-          <span class="arrow">→</span>
+        <div class="work-list">
+          <div class="work reveal">
+            <div class="work-role">Associate <em>Producer</em></div>
+            <div class="work-org"><b>Nordstrom</b> · fashion &amp; styling content for Nordstrom.com and social, start to finish.</div>
+            <div class="work-year">2022–23</div>
+          </div>
+          <div class="work reveal">
+            <div class="work-role">Co-Exec <em>Producer</em> / UPM</div>
+            <div class="work-org"><b>American Heart Association</b> · budget, schedule, casting, and on-set operations.</div>
+            <div class="work-year">2021</div>
+          </div>
+          <div class="work reveal">
+            <div class="work-role">Writer / <em>Producer</em></div>
+            <div class="work-org"><b>The Major Look Productions</b> · Tisha Campbell &amp; the Soul Train Awards, behind the scenes.</div>
+            <div class="work-year">2018</div>
+          </div>
+          <div class="work reveal">
+            <div class="work-role">Producer &amp; <em>Host</em></div>
+            <div class="work-org"><b>Newsish</b> &amp; <b>Social Distractions</b> · original shows for YouTube, Spotify &amp; Apple.</div>
+            <div class="work-year">2020–now</div>
+          </div>
+          <div class="work reveal">
+            <div class="work-role">Founder / <em>Director</em></div>
+            <div class="work-org"><b>Bloom Eternal Design Group</b> · brand, marketing &amp; production studio.</div>
+            <div class="work-year">2004–now</div>
+          </div>
+          <div class="work reveal">
+            <div class="work-role">Adjunct <em>Faculty</em></div>
+            <div class="work-org"><b>Arizona State</b> &amp; <b>Columbia College Hollywood</b> · teaching web &amp; graphic design.</div>
+            <div class="work-year">2022–25</div>
+          </div>
         </div>
-      </a>
+      </section>
+    </div>
 
-      <a class="link" href="mailto:cecilywiggins@gmail.com">
-        <span class="link-num">03 / Reach Out</span>
-        <h2 class="link-title"><em>Email</em></h2>
-        <div class="link-meta">
-          <span>cecilywiggins@gmail.com</span>
-          <span class="arrow">→</span>
+    <!-- CLIENTS & TALENT -->
+    <div class="wrap">
+      <section aria-labelledby="roster">
+        <div class="sec-head">
+          <h2 class="sec-title" id="roster">Clients &amp; <em>collaborators</em></h2>
         </div>
-      </a>
+        <div class="roster">
+          <div class="roster-group reveal">
+            <div class="roster-label">Brands &amp; institutions</div>
+            <p class="roster-names">
+              MAC Cosmetics<span class="dot">·</span>Audi<span class="dot">·</span>Uber<span class="dot">·</span>Motown<span class="dot">·</span>Nordstrom<span class="dot">·</span>Arizona State University<span class="dot">·</span>American Black Film Festival
+            </p>
+          </div>
+          <div class="roster-group reveal">
+            <div class="roster-label">Talent</div>
+            <p class="roster-names">
+              Tisha Campbell<span class="dot">·</span>Damon Wayans<span class="dot">·</span>Kevin Hart
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
 
-    </nav>
+    <!-- CONTACT -->
+    <div class="wrap">
+      <section class="contact" aria-labelledby="contact">
+        <div class="sec-head">
+          <h2 class="sec-title" id="contact">Let's <em>make</em> something</h2>
+          <span class="sec-note">Los Angeles · Remote</span>
+        </div>
+        <nav class="links" aria-label="Portfolio and contact">
+          <a class="link" href="https://cecilywiggins.my.canva.site/portfolio" target="_blank" rel="noopener">
+            <div class="link-t"><em>Portfolio</em></div>
+            <div class="link-meta"><span>Selected work</span><span class="arrow">→</span></div>
+          </a>
+          <a class="link" href="https://www.linkedin.com/in/cecilywiggins" target="_blank" rel="noopener">
+            <div class="link-t"><em>LinkedIn</em></div>
+            <div class="link-meta"><span>Experience · Network</span><span class="arrow">→</span></div>
+          </a>
+          <a class="link" href="mailto:cecilywiggins@gmail.com">
+            <div class="link-t"><em>Email</em></div>
+            <div class="link-meta"><span>cecilywiggins@gmail.com</span><span class="arrow">→</span></div>
+          </a>
+        </nav>
+      </section>
+    </div>
+
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div>© 2026 Cecily Wiggins · Los Angeles</div>
-    <div class="footer-note">Full site forthcoming.</div>
-  </footer>
+  <div class="wrap">
+    <footer class="footer">
+      <div>© 2026 Cecily Wiggins · Los Angeles</div>
+      <div class="note">Producing with the future, on purpose.</div>
+    </footer>
+  </div>
 
-</div>
+  <script>
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+      // Content is visible by default. Only opt into the hidden->reveal effect
+      // when we can animate; a hard fallback guarantees nothing stays hidden.
+      if (reduce || !('IntersectionObserver' in window)) return;
+
+      function show(el) { el.classList.remove('pre'); el.classList.add('in'); }
+      els.forEach(function (el) { el.classList.add('pre'); });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+      els.forEach(function (el) { io.observe(el); });
+
+      // Safety net: reveal anything still hidden after 1.5s no matter what.
+      setTimeout(function () {
+        els.forEach(function (el) { if (el.classList.contains('pre')) show(el); });
+      }, 1500);
+    })();
+  </script>
 
 </body>
 </html>
