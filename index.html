@@ -3,435 +3,252 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cecily Wiggins — Producer & Creative Director</title>
+<title>Cecily Wiggins — Producer &amp; Creative Director</title>
 <meta name="description" content="Los Angeles producer and creative director building film, brand, and social work with an AI-native production pipeline. Credits include Nordstrom, the American Heart Association, and The Major Look Productions.">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Cecily Wiggins — Producer & Creative Director">
+<meta property="og:title" content="Cecily Wiggins — Producer &amp; Creative Director">
 <meta property="og:description" content="Producer · Creative Director · AI-native production. Los Angeles.">
 <meta property="og:type" content="website">
 
 <script>document.documentElement.classList.add('js');</script>
 
-<!-- Fonts: Fraunces display serif + Inter grotesk body (existing brand identity) -->
+<!-- Anton (marquee display) · Hanken Grotesk (body) · Martian Mono (credits) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --bg: #0e0d0c;
-    --bg-2: #161412;
-    --ink: #f5f1ea;
-    --ink-dim: #b8b2aa;        /* bumped for AA body contrast on dark */
-    --ink-faint: #7d766d;      /* labels only, never body */
-    --accent: #d97757;         /* warm terracotta */
-    --accent-glow: #f4a481;
-    --rule: rgba(245, 241, 234, 0.12);
-    --rule-soft: rgba(245, 241, 234, 0.07);
+    --bg: #0a0a0d;            /* cool near-black, not warm */
+    --bg-2: #121218;
+    --ink: #f3f2f7;
+    --ink-dim: #aeacbd;       /* cool gray, AA on bg */
+    --ink-faint: #6c6a7d;
+    --mag: #ff2d8b;           /* electric magenta — the single bold accent */
+    --mag-deep: #d31a6e;
+    --mag-ink: #0a0a0d;       /* text on magenta ground */
+    --rule: rgba(243, 242, 247, 0.13);
+    --rule-soft: rgba(243, 242, 247, 0.07);
 
-    /* semantic z-index scale */
-    --z-grain: 100;
-    --z-content: 1;
-    --z-atmos: 0;
+    --font-display: 'Anton', 'Arial Narrow', sans-serif;
+    --font-body: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', monospace;
 
-    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --z-grain: 100; --z-content: 1; --z-atmos: 0;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   html, body {
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: var(--font-body);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+  ::selection { background: var(--mag); color: #fff; }
+  a { color: inherit; }
 
-  ::selection { background: var(--accent); color: #1a120e; }
-
-  /* Grain overlay */
+  /* grain */
   body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
+    content: ""; position: fixed; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.055;
-    pointer-events: none;
-    z-index: var(--z-grain);
-    mix-blend-mode: overlay;
+    opacity: 0.05; pointer-events: none; z-index: var(--z-grain); mix-blend-mode: overlay;
   }
-
-  /* Atmospheric gradient blobs */
+  /* atmosphere — cool magenta wash, top-right spotlight */
   body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: var(--z-atmos);
     background:
-      radial-gradient(ellipse 60% 40% at 82% 8%, rgba(217, 119, 87, 0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 55% 45% at 12% 92%, rgba(217, 119, 87, 0.07) 0%, transparent 55%);
-    pointer-events: none;
-    z-index: var(--z-atmos);
+      radial-gradient(ellipse 55% 45% at 88% -6%, rgba(255, 45, 139, 0.20) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 6% 104%, rgba(255, 45, 139, 0.06) 0%, transparent 55%);
   }
 
-  .wrap {
-    position: relative;
-    z-index: var(--z-content);
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 clamp(1.25rem, 5vw, 4rem);
-  }
+  .wrap { position: relative; z-index: var(--z-content); max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 4.5rem); }
 
   /* ---------- TOP BAR ---------- */
   .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2.25rem 0 1rem;
-    font-size: 0.76rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.9rem 0 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-dim);
   }
-
-  .monogram {
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-    font-size: 1.15rem;
-    letter-spacing: 0;
-    color: var(--ink);
-    text-transform: none;
-    font-variation-settings: "SOFT" 100, "WONK" 1;
-    text-decoration: none;
+  .mark {
+    font-family: var(--font-display); font-size: 1.35rem; letter-spacing: 0.02em;
+    color: var(--ink); text-decoration: none; line-height: 1;
   }
-
-  .status { display: flex; align-items: center; gap: 0.55rem; }
-
-  .status-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 12px var(--accent-glow);
-    animation: pulse 2.6s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.55; transform: scale(1.25); }
-  }
+  .mark span { color: var(--mag); }
+  .status { display: flex; align-items: center; gap: 0.5rem; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mag); box-shadow: 0 0 12px var(--mag); animation: pulse 2.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(1.25); } }
 
   /* ---------- HERO ---------- */
-  .hero { padding: clamp(3rem, 9vw, 7rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
-
+  .hero { padding: clamp(2.5rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 4rem); }
   .kicker {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--mag); margin-bottom: 1.6rem;
+    display: inline-flex; align-items: center; gap: 0.8rem;
   }
-  .kicker::before { content: ""; width: 34px; height: 1px; background: var(--accent); }
+  .kicker::before { content: ""; width: 26px; height: 2px; background: var(--mag); }
 
-  .name {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
-    font-size: clamp(3.1rem, 11vw, 6rem);
-    line-height: 0.98;
-    letter-spacing: -0.038em;
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 13vw, 8.5rem);
+    line-height: 0.86;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
     text-wrap: balance;
   }
-  .name .line { display: block; overflow: hidden; padding: 0.1em 0.05em; margin: -0.1em -0.05em; }
-  .name .inner { display: inline-block; }
-  .js .name .inner { transform: translateY(112%); }
-  .js .name .inner { animation: rise-up 1.05s var(--ease-out-expo) forwards; }
-  .name .l1 .inner { animation-delay: 0.15s; }
-  .name .l2 .inner { animation-delay: 0.28s; font-style: italic; font-weight: 400; color: var(--accent); }
-  @keyframes rise-up { to { transform: translateY(0); } }
+  .title .row { display: block; overflow: hidden; }
+  .title .row + .row { color: var(--mag); }
+  .title .up { display: inline-block; }
+  .js .title .up { transform: translateY(105%); }
+  .js .title .up { animation: rise 0.95s var(--ease) forwards; }
+  .title .r1 .up { animation-delay: 0.12s; }
+  .title .r2 .up { animation-delay: 0.24s; }
+  @keyframes rise { to { transform: translateY(0); } }
 
   .lede {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: clamp(1.12rem, 1.9vw, 1.5rem);
-    color: var(--ink);
-    max-width: 30ch;
-    line-height: 1.42;
-    margin-top: 2.2rem;
+    font-family: var(--font-body); font-weight: 500;
+    font-size: clamp(1.15rem, 2.1vw, 1.7rem);
+    line-height: 1.32; color: var(--ink); max-width: 24ch;
+    margin-top: 2rem; text-wrap: balance;
   }
-  .lede strong { font-weight: 500; }
-  .lede em {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent);
-  }
-
+  .lede b { color: var(--mag); font-weight: 700; }
   .sub {
-    font-size: clamp(0.98rem, 1.4vw, 1.08rem);
-    color: var(--ink-dim);
-    max-width: 58ch;
-    line-height: 1.6;
-    margin-top: 1.5rem;
+    font-size: clamp(0.98rem, 1.4vw, 1.1rem); color: var(--ink-dim);
+    max-width: 56ch; line-height: 1.62; margin-top: 1.4rem;
   }
 
-  /* discipline row */
-  .disciplines {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem 0.75rem;
-    margin-top: 2.75rem;
+  /* ---------- TICKER ---------- */
+  .ticker {
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    border-block: 1px solid var(--rule);
+    overflow: hidden; padding: 1.05rem 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   }
-  .chip {
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: var(--ink-dim);
-    border: 1px solid var(--rule);
-    border-radius: 100px;
-    padding: 0.5rem 0.9rem;
+  .ticker-track {
+    display: inline-flex; align-items: center; white-space: nowrap;
+    will-change: transform; animation: scroll 34s linear infinite;
   }
-  .chip.lit { color: var(--ink); border-color: rgba(217,119,87,0.5); }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  .ticker-track span {
+    font-family: var(--font-display); text-transform: uppercase;
+    font-size: clamp(1.05rem, 2vw, 1.55rem); letter-spacing: 0.03em; color: var(--ink);
+    padding: 0 1.3rem; display: inline-flex; align-items: center; gap: 1.3rem;
+  }
+  .ticker-track span::after { content: "●"; color: var(--mag); font-size: 0.5em; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
 
-  /* ---------- SECTION SCAFFOLD ---------- */
-  section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-top: 1px solid var(--rule-soft); }
-
-  .sec-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 2.5rem;
-  }
+  /* ---------- SECTIONS ---------- */
+  section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+  .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.75rem; }
   .sec-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(1.7rem, 3.4vw, 2.6rem);
-    letter-spacing: -0.02em;
-    line-height: 1.05;
+    font-family: var(--font-display); text-transform: uppercase;
+    font-size: clamp(1.9rem, 4.6vw, 3.4rem); line-height: 0.92; letter-spacing: 0.01em; text-wrap: balance;
   }
-  .sec-title em { font-style: italic; color: var(--accent); }
-  .sec-note {
-    font-size: 0.8rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    font-weight: 500;
-  }
+  .sec-title .m { color: var(--mag); }
+  .sec-tag { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
 
   /* ---------- AI PIPELINE ---------- */
-  .pipeline-intro {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: clamp(1.35rem, 2.6vw, 2rem);
-    line-height: 1.32;
-    letter-spacing: -0.01em;
-    max-width: 24ch;
-    text-wrap: balance;
-    margin-bottom: 3rem;
+  .rule-top { border-top: 1px solid var(--rule); }
+  .pipe-intro {
+    font-family: var(--font-body); font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2.4rem); line-height: 1.22; letter-spacing: -0.01em;
+    max-width: 20ch; text-wrap: balance; margin-bottom: 3rem;
   }
-  .pipeline-intro em { font-style: italic; color: var(--accent); }
+  .pipe-intro b { color: var(--mag); font-weight: 800; }
+  .caps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0; border-top: 1px solid var(--rule); }
+  .cap { padding: 1.7rem 1.5rem 1.7rem 0; border-bottom: 1px solid var(--rule); }
+  .cap-n { font-family: var(--font-mono); font-size: 0.72rem; color: var(--mag); display: block; margin-bottom: 0.7rem; letter-spacing: 0.05em; }
+  .cap-t { font-family: var(--font-display); text-transform: uppercase; font-size: 1.2rem; letter-spacing: 0.02em; color: var(--ink); margin-bottom: 0.55rem; }
+  .cap-d { font-size: 0.94rem; color: var(--ink-dim); line-height: 1.5; }
 
-  .caps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-    gap: 0;
-    border-top: 1px solid var(--rule);
+  /* ---------- CREDITS / WORK ---------- */
+  .credits { border-top: 1px solid var(--rule); }
+  .credit {
+    display: grid; grid-template-columns: 3ch minmax(0,1.05fr) minmax(0,1.35fr) auto;
+    gap: 0.4rem 1.75rem; align-items: baseline;
+    padding: 1.5rem 0; border-bottom: 1px solid var(--rule);
+    transition: background .4s ease;
   }
-  .cap {
-    padding: 1.75rem 1.5rem 1.75rem 0;
-    border-bottom: 1px solid var(--rule);
+  .credit-i { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); }
+  .credit-role {
+    font-family: var(--font-display); text-transform: uppercase;
+    font-size: clamp(1.25rem, 2.4vw, 1.85rem); letter-spacing: 0.01em; line-height: 1; color: var(--ink);
+    transition: color .35s ease, transform .5s var(--ease);
   }
-  .cap-k {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 0.9rem;
-    color: var(--ink-faint);
-    display: block;
-    margin-bottom: 0.7rem;
-  }
-  .cap-t {
-    font-size: 1.08rem;
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1.3;
-    margin-bottom: 0.5rem;
-  }
-  .cap-d { font-size: 0.92rem; color: var(--ink-dim); line-height: 1.5; }
-
-  /* ---------- SELECTED WORK ---------- */
-  .work-list { display: flex; flex-direction: column; }
-  .work {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr) auto;
-    gap: 0.4rem 2rem;
-    align-items: baseline;
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--rule);
-  }
-  .work:last-child { border-bottom: 1px solid var(--rule); }
-  .work-role {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.25rem, 2.2vw, 1.65rem);
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.1;
-    transition: transform 0.5s var(--ease-out-expo);
-  }
-  .work-role em { font-style: italic; color: var(--accent); }
-  .work-org { font-size: 0.98rem; color: var(--ink-dim); line-height: 1.45; }
-  .work-org b { color: var(--ink); font-weight: 500; }
-  .work-year {
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    color: var(--ink-faint);
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-    text-align: right;
-  }
+  .credit-org { font-size: 0.97rem; color: var(--ink-dim); line-height: 1.45; }
+  .credit-org b { color: var(--ink); font-weight: 700; }
+  .credit-yr { font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-faint); white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
   @media (hover: hover) {
-    .work:hover .work-role { transform: translateX(8px); }
+    .credit:hover { background: linear-gradient(90deg, rgba(255,45,139,0.07), transparent 75%); }
+    .credit:hover .credit-role { color: var(--mag); transform: translateX(8px); }
   }
-  @media (max-width: 680px) {
-    .work { grid-template-columns: 1fr auto; gap: 0.35rem 1rem; }
-    .work-year { grid-column: 2; grid-row: 1; }
-    .work-org { grid-column: 1 / -1; }
+  @media (max-width: 720px) {
+    .credit { grid-template-columns: 3ch 1fr auto; }
+    .credit-org { grid-column: 2 / -1; }
+    .credit-yr { grid-column: 3; grid-row: 1; }
   }
 
-  /* ---------- CLIENTS / TALENT ---------- */
-  .roster { display: grid; gap: 2.5rem; }
-  .roster-group .roster-label {
-    font-size: 0.76rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
-  .roster-names {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(1.15rem, 2.4vw, 1.7rem);
-    line-height: 1.5;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  .roster-names .dot { color: var(--accent); padding: 0 0.35em; }
+  /* ---------- ROSTER ---------- */
+  .roster { display: grid; gap: 2.25rem; }
+  .roster-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.9rem; }
+  .roster-names { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.3rem, 3.2vw, 2.2rem); line-height: 1.32; letter-spacing: 0.015em; color: var(--ink); overflow-wrap: anywhere; }
+  .roster-names .s { color: var(--mag); padding: 0 0.3em; }
 
-  /* ---------- CONTACT ---------- */
-  .contact { border-top: 1px solid var(--rule); }
-  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  /* ---------- CONTACT (the drenched moment) ---------- */
+  .cta { background: var(--mag); color: var(--mag-ink); position: relative; z-index: var(--z-content); }
+  .cta .wrap { padding-block: clamp(3.5rem, 8vw, 6rem); }
+  .cta-h { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(2.4rem, 8vw, 6rem); line-height: 0.9; letter-spacing: 0.01em; text-wrap: balance; }
+  .cta-sub { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 1.1rem; color: rgba(10,10,13,0.72); }
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 2.75rem; border-top: 2px solid var(--mag-ink); }
   .link {
-    display: block;
-    padding: 2.1rem 1.5rem 2.1rem 0;
-    border-bottom: 1px solid var(--rule);
-    border-right: 1px solid var(--rule);
-    text-decoration: none;
-    color: var(--ink);
-    position: relative;
-    overflow: hidden;
-    transition: background 0.5s ease;
+    display: block; text-decoration: none; color: var(--mag-ink);
+    padding: 1.7rem 1.25rem 1.7rem 0; border-bottom: 2px solid var(--mag-ink); border-right: 2px solid var(--mag-ink);
+    position: relative; overflow: hidden;
   }
   .link:last-child { border-right: none; }
   @media (max-width: 900px) { .link { border-right: none; } .link:last-child { border-bottom: none; } }
-  .link::before {
-    content: "";
-    position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(217,119,87,0.08), transparent 70%);
-    opacity: 0; transition: opacity 0.5s ease;
-  }
-  .link:focus-visible { outline: none; }
-  .link:hover::before, .link:focus-visible::before { opacity: 1; }
-  .link-t {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(1.5rem, 2.4vw, 2rem);
-    letter-spacing: -0.02em;
-    margin-bottom: 0.6rem;
-    transition: transform 0.5s var(--ease-out-expo);
-  }
-  .link-t em { font-style: italic; color: var(--accent); }
-  .link:hover .link-t, .link:focus-visible .link-t { transform: translateX(10px); }
-  .link-meta {
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .arrow {
-    font-family: 'Fraunces', serif;
-    font-size: 1.15rem;
-    transition: transform 0.5s var(--ease-out-expo);
-  }
-  .link:hover .arrow, .link:focus-visible .arrow { transform: translateX(8px); color: var(--accent); }
+  .link-t { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(1.6rem, 3vw, 2.3rem); letter-spacing: 0.01em; margin-bottom: 0.5rem; transition: transform .5s var(--ease); }
+  .link-m { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; display: flex; align-items: center; justify-content: space-between; color: rgba(10,10,13,0.75); }
+  .link .arw { font-family: var(--font-display); font-size: 1.2rem; transition: transform .5s var(--ease); }
+  .link:hover .link-t, .link:focus-visible .link-t { transform: translateX(9px); }
+  .link:hover .arw, .link:focus-visible .arw { transform: translateX(9px); }
+  .link:focus-visible { outline: 3px solid var(--mag-ink); outline-offset: -6px; }
 
   /* ---------- FOOTER ---------- */
-  .footer {
-    padding: 2.5rem 0 3rem;
-    border-top: 1px solid var(--rule-soft);
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 0.75rem;
-    font-size: 0.74rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-  .footer .note {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    text-transform: none;
-    letter-spacing: 0;
-    font-size: 0.88rem;
-    color: var(--ink-dim);
-  }
+  .footer { padding: 2.25rem 0 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
 
   /* ---------- REVEAL (visible by default; JS enhances, never gates) ---------- */
   .reveal { opacity: 1; }
-  .reveal.pre { opacity: 0; transform: translateY(18px); }
-  .reveal.in { opacity: 1; transform: none; transition: opacity 0.9s ease, transform 1s var(--ease-out-expo); }
+  .reveal.pre { opacity: 0; transform: translateY(20px); }
+  .reveal.in { opacity: 1; transform: none; transition: opacity .8s ease, transform 1s var(--ease); }
 
-  /* top-of-page load fades (only where JS present) */
-  .js .fade { opacity: 0; animation: fade-rise 1s ease-out forwards; }
-  .kicker.fade { animation-delay: 0.05s; }
-  .lede.fade { animation-delay: 0.55s; }
-  .sub.fade { animation-delay: 0.7s; }
-  .disciplines.fade { animation-delay: 0.85s; }
-  .topbar.fade { animation-delay: 0.1s; }
-  @keyframes fade-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .js .fade { opacity: 0; animation: fade-rise 0.9s ease-out forwards; }
+  .kicker.fade { animation-delay: .05s; }
+  .lede.fade { animation-delay: .5s; }
+  .sub.fade { animation-delay: .62s; }
+  .ticker.fade { animation-delay: .75s; }
+  .topbar.fade { animation-delay: .1s; }
+  @keyframes fade-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-    .js .name .inner,
-    .reveal.pre,
-    .js .fade { opacity: 1 !important; transform: none !important; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    .js .title .up, .reveal.pre, .js .fade { opacity: 1 !important; transform: none !important; }
+    .ticker-track { animation: none !important; white-space: normal; flex-wrap: wrap; justify-content: center; }
   }
 </style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
   <div class="wrap">
     <header class="topbar fade">
-      <a class="monogram" href="#top">CW.</a>
-      <div class="status">
-        <span class="status-dot"></span>
-        <span>Available · LA &amp; Remote</span>
-      </div>
+      <a class="mark" href="#top">CW<span>.</span></a>
+      <div class="status"><span class="dot"></span><span>Available for Production</span></div>
     </header>
   </div>
 
@@ -439,167 +256,107 @@
 
     <!-- HERO -->
     <div class="wrap">
-      <section class="hero" style="border-top:none;padding-top:clamp(2rem,6vw,4rem);">
+      <section class="hero">
         <p class="kicker fade">Producer · Creative Director · Los Angeles</p>
-
-        <h1 class="name">
-          <span class="line l1"><span class="inner">Cecily</span></span>
-          <span class="line l2"><span class="inner">Wiggins.</span></span>
+        <h1 class="title">
+          <span class="row r1"><span class="up">Cecily</span></span>
+          <span class="row r2"><span class="up">Wiggins</span></span>
         </h1>
-
-        <p class="lede fade">
-          I produce film, brand, and social work — and build the <em>AI-native pipelines</em> that let a small team move like a big one.
-        </p>
-
-        <p class="sub fade">
-          Two decades across production, marketing, and design, from Nordstrom shoots to national campaigns. Now folding generative tools into every stage of the work — pre-viz, post, and the systems in between.
-        </p>
-
-        <div class="disciplines fade">
-          <span class="chip lit">Production</span>
-          <span class="chip lit">Creative Direction</span>
-          <span class="chip lit">AI Pipelines</span>
-          <span class="chip">Post &amp; Editing</span>
-          <span class="chip">Brand Campaigns</span>
-          <span class="chip">Content &amp; Social</span>
-        </div>
+        <p class="lede fade">I produce film, brand &amp; social — and build the <b>AI-native pipelines</b> that let a small team move like a big one.</p>
+        <p class="sub fade">Two decades across production, marketing, and design, from Nordstrom shoots to national campaigns. Now folding generative tools into every stage of the work.</p>
       </section>
+    </div>
+
+    <!-- CLIENT TICKER -->
+    <div class="wrap">
+      <div class="ticker fade" aria-label="Selected clients">
+        <div class="ticker-track" aria-hidden="true">
+          <span>MAC Cosmetics</span><span>Audi</span><span>Uber</span><span>Motown</span><span>Nordstrom</span><span>American Heart Association</span><span>Arizona State</span><span>American Black Film Festival</span>
+          <span>MAC Cosmetics</span><span>Audi</span><span>Uber</span><span>Motown</span><span>Nordstrom</span><span>American Heart Association</span><span>Arizona State</span><span>American Black Film Festival</span>
+        </div>
+      </div>
     </div>
 
     <!-- AI PIPELINE -->
     <div class="wrap">
-      <section aria-labelledby="edge">
+      <section class="rule-top" aria-labelledby="edge">
         <div class="sec-head">
-          <h2 class="sec-title" id="edge">The <em>AI-native</em> pipeline</h2>
-          <span class="sec-note">What's new</span>
+          <h2 class="sec-title" id="edge">The <span class="m">AI-native</span><br>pipeline</h2>
+          <span class="sec-tag">// what's new</span>
         </div>
-
-        <p class="pipeline-intro reveal">
-          Generative tools don't replace a crew. In the right hands they let one move <em>faster, cheaper, and stranger</em> than the old way allowed.
-        </p>
-
+        <p class="pipe-intro reveal">Generative tools don't replace a crew. In the right hands they move <b>faster, cheaper &amp; stranger</b> than the old way allowed.</p>
         <div class="caps">
-          <div class="cap reveal">
-            <span class="cap-k">i.</span>
-            <div class="cap-t">Concept &amp; pre-viz</div>
-            <p class="cap-d">Mood, look, and boards generated in hours with MidJourney and Runway, so a pitch arrives already seeing itself.</p>
-          </div>
-          <div class="cap reveal">
-            <span class="cap-k">ii.</span>
-            <div class="cap-t">AI video &amp; post</div>
-            <p class="cap-d">Generative fill, cleanup, and motion inside a Premiere / After Effects workflow. Real editorial craft, accelerated.</p>
-          </div>
-          <div class="cap reveal">
-            <span class="cap-k">iii.</span>
-            <div class="cap-t">Custom GPTs &amp; agents</div>
-            <p class="cap-d">Bespoke tools for writers' rooms and marketing teams, trained on the brief, working while you sleep.</p>
-          </div>
-          <div class="cap reveal">
-            <span class="cap-k">iv.</span>
-            <div class="cap-t">Campaign systems</div>
-            <p class="cap-d">Copy, variations, and content at scale — AI-assisted, human-directed, on-brand every time.</p>
-          </div>
+          <div class="cap reveal"><div class="cap-t">Concept &amp; Pre-viz</div><p class="cap-d">Mood, look &amp; boards generated in hours with MidJourney and Runway — a pitch that already sees itself.</p></div>
+          <div class="cap reveal"><div class="cap-t">AI Video &amp; Post</div><p class="cap-d">Generative fill, cleanup &amp; motion inside a Premiere / After Effects workflow. Real editorial craft, accelerated.</p></div>
+          <div class="cap reveal"><div class="cap-t">Custom GPTs</div><p class="cap-d">Bespoke tools for writers' rooms and marketing teams, trained on the brief and working while you sleep.</p></div>
+          <div class="cap reveal"><div class="cap-t">Campaign Systems</div><p class="cap-d">Copy, variations &amp; content at scale. AI-assisted, human-directed, on-brand every time.</p></div>
         </div>
       </section>
     </div>
 
-    <!-- SELECTED WORK -->
+    <!-- CREDITS -->
     <div class="wrap">
       <section aria-labelledby="work">
         <div class="sec-head">
-          <h2 class="sec-title" id="work">Selected <em>work</em></h2>
-          <span class="sec-note">Production · 2004–now</span>
+          <h2 class="sec-title" id="work">Selected <span class="m">Credits</span></h2>
+          <span class="sec-tag">// production 2004–now</span>
         </div>
-
-        <div class="work-list">
-          <div class="work reveal">
-            <div class="work-role">Associate <em>Producer</em></div>
-            <div class="work-org"><b>Nordstrom</b> · fashion &amp; styling content for Nordstrom.com and social, start to finish.</div>
-            <div class="work-year">2022–23</div>
-          </div>
-          <div class="work reveal">
-            <div class="work-role">Co-Exec <em>Producer</em> / UPM</div>
-            <div class="work-org"><b>American Heart Association</b> · budget, schedule, casting, and on-set operations.</div>
-            <div class="work-year">2021</div>
-          </div>
-          <div class="work reveal">
-            <div class="work-role">Writer / <em>Producer</em></div>
-            <div class="work-org"><b>The Major Look Productions</b> · Tisha Campbell &amp; the Soul Train Awards, behind the scenes.</div>
-            <div class="work-year">2018</div>
-          </div>
-          <div class="work reveal">
-            <div class="work-role">Producer &amp; <em>Host</em></div>
-            <div class="work-org"><b>Newsish</b> &amp; <b>Social Distractions</b> · original shows for YouTube, Spotify &amp; Apple.</div>
-            <div class="work-year">2020–now</div>
-          </div>
-          <div class="work reveal">
-            <div class="work-role">Founder / <em>Director</em></div>
-            <div class="work-org"><b>Bloom Eternal Design Group</b> · brand, marketing &amp; production studio.</div>
-            <div class="work-year">2004–now</div>
-          </div>
-          <div class="work reveal">
-            <div class="work-role">Adjunct <em>Faculty</em></div>
-            <div class="work-org"><b>Arizona State</b> &amp; <b>Columbia College Hollywood</b> · teaching web &amp; graphic design.</div>
-            <div class="work-year">2022–25</div>
-          </div>
+        <div class="credits">
+          <div class="credit reveal"><span class="credit-i">01</span><div class="credit-role">Associate Producer</div><div class="credit-org"><b>Nordstrom</b> · fashion &amp; styling content for web and social, start to finish.</div><div class="credit-yr">2022–23</div></div>
+          <div class="credit reveal"><span class="credit-i">02</span><div class="credit-role">Co-Exec Producer</div><div class="credit-org"><b>American Heart Association</b> · budget, schedule, casting &amp; on-set operations.</div><div class="credit-yr">2021</div></div>
+          <div class="credit reveal"><span class="credit-i">03</span><div class="credit-role">Writer / Producer</div><div class="credit-org"><b>The Major Look Productions</b> · Tisha Campbell &amp; the Soul Train Awards, behind the scenes.</div><div class="credit-yr">2018</div></div>
+          <div class="credit reveal"><span class="credit-i">04</span><div class="credit-role">Producer &amp; Host</div><div class="credit-org"><b>Newsish</b> &amp; <b>Social Distractions</b> · original shows for YouTube, Spotify &amp; Apple.</div><div class="credit-yr">2020–now</div></div>
+          <div class="credit reveal"><span class="credit-i">05</span><div class="credit-role">Founder / Director</div><div class="credit-org"><b>Bloom Eternal Design Group</b> · brand, marketing &amp; production studio.</div><div class="credit-yr">2004–now</div></div>
+          <div class="credit reveal"><span class="credit-i">06</span><div class="credit-role">Adjunct Faculty</div><div class="credit-org"><b>Arizona State</b> &amp; <b>Columbia College Hollywood</b> · teaching web &amp; graphic design.</div><div class="credit-yr">2022–25</div></div>
         </div>
       </section>
     </div>
 
-    <!-- CLIENTS & TALENT -->
+    <!-- ROSTER -->
     <div class="wrap">
-      <section aria-labelledby="roster">
-        <div class="sec-head">
-          <h2 class="sec-title" id="roster">Clients &amp; <em>collaborators</em></h2>
-        </div>
+      <section class="rule-top" aria-labelledby="roster">
+        <div class="sec-head"><h2 class="sec-title" id="roster">Clients &amp; <span class="m">Collaborators</span></h2></div>
         <div class="roster">
-          <div class="roster-group reveal">
-            <div class="roster-label">Brands &amp; institutions</div>
-            <p class="roster-names">
-              MAC Cosmetics<span class="dot">·</span>Audi<span class="dot">·</span>Uber<span class="dot">·</span>Motown<span class="dot">·</span>Nordstrom<span class="dot">·</span>Arizona State University<span class="dot">·</span>American Black Film Festival
-            </p>
+          <div class="reveal">
+            <div class="roster-label">// brands &amp; institutions</div>
+            <p class="roster-names">MAC <span class="s">/</span> Audi <span class="s">/</span> Uber <span class="s">/</span> Motown <span class="s">/</span> Nordstrom <span class="s">/</span> Arizona State <span class="s">/</span> American Black Film Festival</p>
           </div>
-          <div class="roster-group reveal">
-            <div class="roster-label">Talent</div>
-            <p class="roster-names">
-              Tisha Campbell<span class="dot">·</span>Damon Wayans<span class="dot">·</span>Kevin Hart
-            </p>
+          <div class="reveal">
+            <div class="roster-label">// talent</div>
+            <p class="roster-names">Tisha Campbell <span class="s">/</span> Damon Wayans <span class="s">/</span> Kevin Hart</p>
           </div>
         </div>
-      </section>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="wrap">
-      <section class="contact" aria-labelledby="contact">
-        <div class="sec-head">
-          <h2 class="sec-title" id="contact">Let's <em>make</em> something</h2>
-          <span class="sec-note">Los Angeles · Remote</span>
-        </div>
-        <nav class="links" aria-label="Portfolio and contact">
-          <a class="link" href="https://cecilywiggins.my.canva.site/portfolio" target="_blank" rel="noopener">
-            <div class="link-t"><em>Portfolio</em></div>
-            <div class="link-meta"><span>Selected work</span><span class="arrow">→</span></div>
-          </a>
-          <a class="link" href="https://www.linkedin.com/in/cecilywiggins" target="_blank" rel="noopener">
-            <div class="link-t"><em>LinkedIn</em></div>
-            <div class="link-meta"><span>Experience · Network</span><span class="arrow">→</span></div>
-          </a>
-          <a class="link" href="mailto:cecilywiggins@gmail.com">
-            <div class="link-t"><em>Email</em></div>
-            <div class="link-meta"><span>cecilywiggins@gmail.com</span><span class="arrow">→</span></div>
-          </a>
-        </nav>
       </section>
     </div>
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- CONTACT (drenched) -->
+  <section class="cta">
+    <div class="wrap">
+      <h2 class="cta-h reveal">Let's make<br>something.</h2>
+      <p class="cta-sub reveal">Los Angeles · Remote · Available now</p>
+      <nav class="links" aria-label="Portfolio and contact">
+        <a class="link" href="https://cecilywiggins.my.canva.site/portfolio" target="_blank" rel="noopener">
+          <div class="link-t">Portfolio</div>
+          <div class="link-m"><span>Selected work</span><span class="arw">→</span></div>
+        </a>
+        <a class="link" href="https://www.linkedin.com/in/cecilywiggins" target="_blank" rel="noopener">
+          <div class="link-t">LinkedIn</div>
+          <div class="link-m"><span>Experience · Network</span><span class="arw">→</span></div>
+        </a>
+        <a class="link" href="mailto:cecilywiggins@gmail.com">
+          <div class="link-t">Email</div>
+          <div class="link-m"><span>cecilywiggins@gmail.com</span><span class="arw">→</span></div>
+        </a>
+      </nav>
+    </div>
+  </section>
+
   <div class="wrap">
     <footer class="footer">
       <div>© 2026 Cecily Wiggins · Los Angeles</div>
-      <div class="note">Producing with the future, on purpose.</div>
+      <div>Producing with the future, on purpose</div>
     </footer>
   </div>
 
@@ -607,22 +364,14 @@
     (function () {
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-      // Content is visible by default. Only opt into the hidden->reveal effect
-      // when we can animate; a hard fallback guarantees nothing stays hidden.
       if (reduce || !('IntersectionObserver' in window)) return;
-
       function show(el) { el.classList.remove('pre'); el.classList.add('in'); }
       els.forEach(function (el) { el.classList.add('pre'); });
-
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
       }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
       els.forEach(function (el) { io.observe(el); });
-
-      // Safety net: reveal anything still hidden after 1.5s no matter what.
-      setTimeout(function () {
-        els.forEach(function (el) { if (el.classList.contains('pre')) show(el); });
-      }, 1500);
+      setTimeout(function () { els.forEach(function (el) { if (el.classList.contains('pre')) show(el); }); }, 1500);
     })();
   </script>
 
