@@ -222,6 +222,40 @@
   /* ---------- FOOTER ---------- */
   .footer { padding: 2.25rem 0 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
 
+  /* ---------- MOTION: aurora, spotlight, progress, shine ---------- */
+  .aurora { position: fixed; inset: -20%; z-index: var(--z-atmos); pointer-events: none; overflow: hidden; }
+  .aurora span { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.55; will-change: transform; }
+  .aurora .a1 { width: 46vw; height: 46vw; left: 58%; top: -12%; background: radial-gradient(circle, rgba(255,45,139,0.30), transparent 66%); animation: drift1 26s ease-in-out infinite alternate; }
+  .aurora .a2 { width: 42vw; height: 42vw; left: -10%; top: 66%; background: radial-gradient(circle, rgba(190,40,170,0.20), transparent 66%); animation: drift2 32s ease-in-out infinite alternate; }
+  @keyframes drift1 { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(-8vw,9vh,0) scale(1.15); } }
+  @keyframes drift2 { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(9vw,-8vh,0) scale(1.2); } }
+
+  .spotlight {
+    position: fixed; left: 0; top: 0; width: 620px; height: 620px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,45,139,0.16), transparent 60%);
+    filter: blur(26px); transform: translate(-50%, -50%); translate: -100vw -100vh;
+    pointer-events: none; z-index: var(--z-atmos); opacity: 0; transition: opacity .5s ease; will-change: translate;
+  }
+  .progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--mag); z-index: 200;
+    transform: scaleX(0); transform-origin: left; will-change: transform; box-shadow: 0 0 10px var(--mag);
+  }
+
+  /* CTA button shine sweep */
+  .link::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,0.35) 50%, transparent 58%);
+    transform: translateX(-130%); transition: transform .7s var(--ease);
+  }
+  .link:hover::after, .link:focus-visible::after { transform: translateX(130%); }
+
+  /* neon pulse on the name */
+  .js .title .r2 { animation: neon 3.6s ease-in-out 1.5s infinite alternate; }
+  @keyframes neon {
+    from { text-shadow: 0 0 0 rgba(255,45,139,0); }
+    to { text-shadow: 0 0 24px rgba(255,45,139,0.5), 0 0 52px rgba(255,45,139,0.22); }
+  }
+
   /* ---------- REVEAL (visible by default; JS enhances, never gates) ---------- */
   .reveal { opacity: 1; }
   .reveal.pre { opacity: 0; transform: translateY(20px); }
@@ -240,10 +274,17 @@
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     .js .title .up, .reveal.pre, .js .fade { opacity: 1 !important; transform: none !important; }
     .ticker-track { animation: none !important; white-space: normal; flex-wrap: wrap; justify-content: center; }
+    .aurora span { animation: none !important; }
+    .spotlight { display: none !important; }
+    .js .title .r2 { animation: none !important; }
   }
 </style>
 </head>
 <body>
+
+  <div class="progress" id="progress"></div>
+  <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span></div>
+  <div class="spotlight" id="spot" aria-hidden="true"></div>
 
   <div class="wrap">
     <header class="topbar fade">
@@ -372,6 +413,25 @@
       }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
       els.forEach(function (el) { io.observe(el); });
       setTimeout(function () { els.forEach(function (el) { if (el.classList.contains('pre')) show(el); }); }, 1500);
+    })();
+
+    // scroll progress + cursor spotlight
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var bar = document.getElementById('progress');
+      if (bar) {
+        var t = false;
+        function upd() { var h = document.documentElement; var max = h.scrollHeight - h.clientHeight; var r = max > 0 ? h.scrollTop / max : 0; bar.style.transform = 'scaleX(' + r + ')'; t = false; }
+        window.addEventListener('scroll', function () { if (!t) { requestAnimationFrame(upd); t = true; } }, { passive: true });
+        upd();
+      }
+      var fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+      var spot = document.getElementById('spot');
+      if (spot && fine && !reduce) {
+        var x = 0, y = 0, r = false;
+        function move() { spot.style.translate = x + 'px ' + y + 'px'; r = false; }
+        window.addEventListener('pointermove', function (e) { x = e.clientX; y = e.clientY; spot.style.opacity = '1'; if (!r) { requestAnimationFrame(move); r = true; } }, { passive: true });
+      }
     })();
   </script>
 
