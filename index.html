@@ -1,444 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cecily Wiggins — Producer & Creative Director</title>
-<meta name="description" content="Producer, post-production, and multicultural creative director based in Los Angeles. Portfolio and contact.">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Cecily Wiggins — Producer">
-<meta property="og:description" content="Producer · Post-Production · Multicultural Campaigns">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cecily Wiggins | Creative Director, Producer, Multimedia Strategist, Web Designer</title>
+<meta name="description" content="Creative Director, Producer, Multimedia Strategist, and Web Designer working across entertainment production, generative AI, and digital media. Los Angeles.">
+<meta property="og:title" content="Cecily Wiggins">
+<meta property="og:description" content="Creative Director · Producer · Multimedia Strategist · Web Designer. Entertainment production, generative AI, and digital media.">
 <meta property="og:type" content="website">
-
-<!-- Fonts: Editorial serif display + clean grotesk body -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300;9..144,400;9..144,600;9..144,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+<meta name="theme-color" content="#e7e5e1">
 <style>
-  :root {
-    --bg: #0e0d0c;
-    --bg-2: #161412;
-    --ink: #f5f1ea;
-    --ink-dim: #a8a39c;
-    --ink-faint: #5a544d;
-    --accent: #d97757;          /* warm terracotta — Anthropic-adjacent but distinct */
-    --accent-glow: #f4a481;
-    --rule: rgba(245, 241, 234, 0.12);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html, body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', -apple-system, sans-serif;
-    overflow-x: hidden;
-    min-height: 100vh;
-  }
-
-  /* Grain overlay */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.06;
-    pointer-events: none;
-    z-index: 100;
-    mix-blend-mode: overlay;
-  }
-
-  /* Atmospheric gradient blobs */
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 40% at 80% 20%, rgba(217, 119, 87, 0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(217, 119, 87, 0.08) 0%, transparent 55%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .container {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  /* TOP BAR */
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    opacity: 0;
-    animation: fade-in 1.2s 0.2s ease-out forwards;
-  }
-
-  .monogram {
-    font-family: 'Fraunces', serif;
-    font-weight: 900;
-    font-size: 1.1rem;
-    letter-spacing: 0;
-    color: var(--ink);
-    text-transform: none;
-    font-variation-settings: "SOFT" 100, "WONK" 1;
-  }
-
-  .status {
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-  }
-
-  .status-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 12px var(--accent-glow);
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.2); }
-  }
-
-  /* HERO */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 4rem 0;
-    position: relative;
-  }
-
-  .eyebrow {
-    font-size: 0.78rem;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: rise 1s 0.5s ease-out forwards;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .eyebrow::before {
-    content: "";
-    width: 32px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .name {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
-    font-size: clamp(3rem, 10vw, 8rem);
-    line-height: 1.02;
-    letter-spacing: -0.035em;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-  }
-
-  .name .first,
-  .name .last {
-    display: block;
-    overflow: hidden;
-    padding: 0.12em 0.05em;
-    margin: -0.12em -0.05em;
-  }
-
-  .name .inner {
-    display: inline-block;
-    transform: translateY(110%);
-    animation: rise-up 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .name .first .inner { animation-delay: 0.6s; }
-  .name .last .inner { animation-delay: 0.75s; font-style: italic; font-weight: 400; color: var(--accent); }
-
-  @keyframes rise-up {
-    to { transform: translateY(0); }
-  }
-
-  .tagline {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: clamp(1rem, 1.6vw, 1.35rem);
-    color: var(--ink-dim);
-    max-width: 620px;
-    line-height: 1.5;
-    margin-top: 2rem;
-    opacity: 0;
-    animation: rise 1s 1.2s ease-out forwards;
-  }
-
-  .tagline em {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--ink);
-  }
-
-  /* DIVIDER LABEL */
-  .roles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem 2.5rem;
-    margin-top: 3.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--rule);
-    opacity: 0;
-    animation: rise 1s 1.4s ease-out forwards;
-  }
-
-  .role {
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    font-weight: 500;
-  }
-
-  .role.lit { color: var(--ink); }
-
-  /* LINKS — the main event */
-  .links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 0;
-    margin-top: 5rem;
-    border-top: 1px solid var(--rule);
-    opacity: 0;
-    animation: rise 1s 1.6s ease-out forwards;
-  }
-
-  .link {
-    display: block;
-    padding: 2.25rem 2rem 2.25rem 0;
-    border-bottom: 1px solid var(--rule);
-    border-right: 1px solid var(--rule);
-    text-decoration: none;
-    color: var(--ink);
-    position: relative;
-    transition: padding 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.6s ease;
-    overflow: hidden;
-  }
-
-  .link:last-child { border-right: none; }
-
-  @media (max-width: 900px) {
-    .link { border-right: none; }
-    .link:last-child { border-bottom: none; }
-  }
-
-  .link::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(217, 119, 87, 0.06), transparent 70%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-
-  .link:hover { padding-left: 1.5rem; }
-  .link:hover::before { opacity: 1; }
-
-  .link-num {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 0.85rem;
-    color: var(--ink-faint);
-    margin-bottom: 1rem;
-    display: block;
-    transition: color 0.4s ease;
-  }
-  .link:hover .link-num { color: var(--accent); }
-
-  .link-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(1.5rem, 2.4vw, 2rem);
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    margin-bottom: 0.5rem;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .link:hover .link-title { transform: translateX(4px); }
-
-  .link-title em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .link-meta {
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1.25rem;
-  }
-
-  .arrow {
-    display: inline-block;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-  }
-
-  .link:hover .arrow { transform: translateX(8px); }
-
-  /* FOOTER */
-  .footer {
-    margin-top: 5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    opacity: 0;
-    animation: fade-in 1s 2s ease-out forwards;
-  }
-
-  .footer-note {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    text-transform: none;
-    letter-spacing: 0;
-    font-size: 0.85rem;
-    color: var(--ink-dim);
-  }
-
-  @keyframes fade-in {
-    to { opacity: 1; }
-  }
-
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Mobile tightening */
-  @media (max-width: 640px) {
-    .container { padding: 1.5rem 1.25rem; }
-    .hero { padding: 2rem 0; }
-    .roles { gap: 0.8rem 1.5rem; margin-top: 2.5rem; }
-    .links { margin-top: 3rem; }
-    .link { padding: 1.75rem 1rem 1.75rem 0; }
-    .footer { margin-top: 3rem; flex-direction: column; align-items: flex-start; }
-  }
-
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-    .name .inner { transform: translateY(0); }
-  }
+@font-face{font-family:"Martian Mono";src:url(fonts/martian-mono-latin.woff2) format("woff2");font-weight:100 800;font-stretch:75% 112%;font-display:swap}
+@font-face{font-family:"Schibsted Grotesk";src:url(fonts/schibsted-grotesk-latin.woff2) format("woff2");font-weight:400 700;font-display:swap}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{--carbon:#0d0d0f;--tension:#c21f1f;--concrete:#e7e5e1;--paper:#f2f1ed;--rule:rgba(13,13,15,.28);
+  --mono:"Martian Mono",ui-monospace,"SF Mono",Menlo,monospace;--body:"Schibsted Grotesk",system-ui,sans-serif;
+  background:var(--concrete);color:var(--carbon);font-family:var(--body)}
+.splash{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;position:relative}
+.splash::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+::selection{background:var(--tension);color:var(--paper)}
+.bar{position:relative;display:flex;justify-content:space-between;gap:16px;padding:20px clamp(16px,3vw,40px);border-bottom:1px solid var(--rule);font:500 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.bar b{letter-spacing:.2em}
+.main{position:relative;flex:1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:center;gap:clamp(8px,3vw,48px);padding:clamp(16px,3vw,40px) clamp(16px,3vw,40px) 0}
+.copy{max-width:38rem;padding-block:clamp(8px,4vh,48px)}
+h1{margin:0;font-family:var(--mono);font-weight:500;font-variation-settings:"wdth" 75;font-stretch:75%;font-size:clamp(3rem,7.4vw,6rem);line-height:.98;letter-spacing:-.025em;text-transform:uppercase;max-width:7ch}
+.title{margin:28px 0 0;font:500 .8125rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.lede{margin:16px 0 0;max-width:34rem;font-size:1.125rem;line-height:1.6;color:#2a2a2d;text-wrap:pretty}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;min-height:52px;padding:0 28px;font:600 .8125rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--carbon);cursor:pointer;clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);transition:background-color .22s cubic-bezier(.16,1,.3,1),color .22s cubic-bezier(.16,1,.3,1)}
+.btn-primary{background:var(--tension);color:#fff}
+.btn-primary:hover{background:var(--carbon);color:var(--paper)}
+.btn-secondary{background:var(--carbon);padding:0}
+.btn-secondary span{display:flex;align-items:center;height:50px;margin:1px;padding:0 27px;background:var(--concrete);clip-path:polygon(0 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%);transition:background-color .22s cubic-bezier(.16,1,.3,1),color .22s cubic-bezier(.16,1,.3,1)}
+.btn-secondary:hover span{background:var(--carbon);color:var(--paper)}
+.btn:focus-visible{outline:2px solid var(--carbon);outline-offset:4px;clip-path:none}
+.series{margin:18px 0 0;max-width:34rem;font-size:.9375rem;line-height:1.55;color:#3a3a3d}
+.column{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}
+.column-svg{width:100%;height:auto;max-height:min(78dvh,820px);aspect-ratio:1/1;display:block}
+.col-axis{stroke:var(--tension);stroke-width:1;stroke-dasharray:5 6;opacity:.8}
+.col-arrow{fill:var(--tension)}
+.col-rod{stroke:var(--carbon);stroke-width:9;stroke-linecap:round}
+.col-cord{stroke:var(--tension);stroke-linecap:round}
+.col-slack{stroke:#9a9a9a;stroke-width:1}
+.col-node{fill:var(--paper);stroke:var(--carbon);stroke-width:2}
+.col-leader{stroke:var(--carbon);stroke-width:1;opacity:.6;fill:none}
+.col-label{font:500 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;fill:var(--carbon)}
+.disciplines{list-style:none;margin:0;padding:0}
+.foot{position:relative;padding:18px clamp(16px,3vw,40px);border-top:1px solid var(--rule);margin-top:clamp(8px,2vh,24px);font:500 .6875rem/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#4a4a4d}
+.foot a{color:inherit;text-underline-offset:3px}
+@media (min-width:801px){.disciplines{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+@media (max-width:800px){
+  .main{grid-template-columns:1fr;align-items:start;gap:0;padding-top:clamp(12px,4vw,24px)}
+  .copy{padding-block:8px 0}
+  h1{max-width:none}
+  .col-tag{display:none}
+  .column-svg{max-height:56dvh;margin-top:20px}
+  .disciplines{align-self:stretch;margin:8px 0;border-top:1px solid var(--rule)}
+  .disciplines li{padding:14px 0;border-bottom:1px solid var(--rule);font:500 .75rem/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  .btn{flex:1 1 100%;justify-content:center}
+  .btn-secondary span{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.btn,.btn span{transition:none}}
 </style>
 </head>
 <body>
-
-<div class="container">
-
-  <!-- TOP BAR -->
-  <header class="topbar">
-    <div class="monogram">CW.</div>
-    <div class="status">
-      <span class="status-dot"></span>
-      <span>Available for Producing Work</span>
+<main class="splash">
+  <div class="bar"><b>Cecily Wiggins</b><span>Los Angeles, CA</span></div>
+  <div class="main">
+    <div class="copy">
+      <h1>Cecily Wiggins</h1>
+      <p class="title">Creative Director · Producer · Multimedia Strategist · Web Designer</p>
+      <p class="lede">Los Angeles based multihyphenate creative professional at the intersection of entertainment production, generative AI, and digital media.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:cecilyjwiggins@gmail.com">Email Cecily</a>
+        <a class="btn btn-secondary" href="https://www.youtube.com/playlist?list=PLWtVI3u9_yB8" target="_blank" rel="noopener noreferrer"><span>Watch my AI series</span></a>
+        <a class="btn btn-secondary" href="https://www.canva.com/d/L_qz354YOpJEggF" target="_blank" rel="noopener noreferrer"><span>Portfolio deck</span></a>
+      </div>
+      <p class="series">My AI mini-series: eight short vertical drama episodes that I wrote, produced, and edited at Dramella Studios.</p>
     </div>
-  </header>
-
-  <!-- HERO -->
-  <main class="hero">
-    <div class="eyebrow">Producer · Los Angeles</div>
-
-    <h1 class="name">
-      <span class="first"><span class="inner">Cecily</span></span>
-      <span class="last"><span class="inner">Wiggins.</span></span>
-    </h1>
-
-    <p class="tagline">
-      Independent producer working at the intersection of <em>post-production</em>, <em>multicultural campaigns</em>, and <em>AI-driven creative</em>. Currently producing at Orphan Outcast Productions. Previously HARTBEAT.
-    </p>
-
-    <div class="roles">
-      <span class="role lit">Production</span>
-      <span class="role lit">Post-Production</span>
-      <span class="role">Multi-Market Campaigns</span>
-      <span class="role">Creative Direction</span>
-      <span class="role">AI Pipelines</span>
+    <div class="column">
+      <svg id="col" class="column-svg" viewBox="0 0 800 800" aria-hidden="true" focusable="false"></svg>
+      <ul class="disciplines" aria-label="Areas of work">
+        <li>AI Studio</li><li>Podcast &amp; Entertainment</li><li>Brand, Recruitment &amp; Commerce</li><li>Independent Practice &amp; Ventures</li><li>Design Archive</li>
+      </ul>
     </div>
-
-    <!-- LINKS -->
-    <nav class="links" aria-label="Primary contact and portfolio">
-
-      <a class="link" href="https://cecilywiggins.my.canva.site/portfolio" target="_blank" rel="noopener">
-        <span class="link-num">01 / Work</span>
-        <h2 class="link-title"><em>Portfolio</em></h2>
-        <div class="link-meta">
-          <span>Canva · Selected Work</span>
-          <span class="arrow">→</span>
-        </div>
-      </a>
-
-      <a class="link" href="https://www.linkedin.com/in/cecilywiggins" target="_blank" rel="noopener">
-        <span class="link-num">02 / Profile</span>
-        <h2 class="link-title"><em>LinkedIn</em></h2>
-        <div class="link-meta">
-          <span>Experience · Network</span>
-          <span class="arrow">→</span>
-        </div>
-      </a>
-
-      <a class="link" href="mailto:cecilywiggins@gmail.com">
-        <span class="link-num">03 / Reach Out</span>
-        <h2 class="link-title"><em>Email</em></h2>
-        <div class="link-meta">
-          <span>cecilywiggins@gmail.com</span>
-          <span class="arrow">→</span>
-        </div>
-      </a>
-
-    </nav>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div>© 2026 Cecily Wiggins · Los Angeles</div>
-    <div class="footer-note">Full site forthcoming.</div>
-  </footer>
-
-</div>
-
+  </div>
+  <div class="foot">Full portfolio site coming soon.</div>
+</main>
+<script>
+(function(){
+  var L=135,CX=400,N=5,BASE=770,GAP=34,NS="http://www.w3.org/2000/svg";
+  var TAGS=["AI Studio","Podcast & Entertainment","Brand, Recruitment & Commerce","Independent Practice & Ventures","Design Archive"];
+  var svg=document.getElementById("col");
+  function pose(s){var d=36+16*s,h=Math.sqrt(L*L-4*d*d),p=h+GAP,b=[],t=[];
+    for(var k=0;k<N;k++){var y0=BASE-k*p,sx=3*Math.sin(Math.PI*s+k*1.1),dir=k%2?1:-1;b.push([CX+dir*d+sx,y0]);t.push([CX-dir*d+sx,y0-h])}
+    return{b:b,t:t,w:1.3+1.2*s}}
+  function el(name,cls,parent){var e=document.createElementNS(NS,name);if(cls)e.setAttribute("class",cls);(parent||svg).appendChild(e);return e}
+  var f=function(n){return n.toFixed(2)};
+  var sh=el("ellipse");sh.setAttribute("cx",CX+24);sh.setAttribute("cy",BASE+10);sh.setAttribute("rx",120);sh.setAttribute("ry",10);sh.setAttribute("fill","#0d0d0f");sh.setAttribute("opacity",".14");
+  var ax=el("line","col-axis");ax.setAttribute("x1",CX);ax.setAttribute("x2",CX);ax.setAttribute("y1",18);ax.setAttribute("y2",792);
+  [["M"+(CX-5)+" 30L"+(CX+5)+" 30L"+CX+" 40Z"],["M"+(CX-5)+" 780L"+(CX+5)+" 780L"+CX+" 770Z"]].forEach(function(d){el("path","col-arrow").setAttribute("d",d[0])});
+  var slack2=[],slack=[],redT=[],redB=[],rods=[],nb=[],nt=[],leaders=[],labels=[],i;
+  for(i=0;i<N-2;i++)slack2.push(el("line","col-slack"));
+  for(i=0;i<N-1;i++)slack.push(el("line","col-slack"));
+  for(i=0;i<N-1;i++){redT.push(el("line","col-cord"));redB.push(el("line","col-cord"))}
+  for(i=0;i<N;i++)rods.push(el("line","col-rod"));
+  for(i=0;i<N;i++){nb.push(el("circle","col-node"));nt.push(el("circle","col-node"))}
+  nb.concat(nt).forEach(function(c){c.setAttribute("r",4.4)});
+  TAGS.forEach(function(name){var g=el("g","col-tag");leaders.push(el("polyline","col-leader",g));var t=el("text","col-label",g);t.textContent=name;labels.push(t)});
+  function line(e,a,c){e.setAttribute("x1",f(a[0]));e.setAttribute("y1",f(a[1]));e.setAttribute("x2",f(c[0]));e.setAttribute("y2",f(c[1]))}
+  function apply(s){var p=pose(s),b=p.b,t=p.t,k;
+    for(k=0;k<N;k++){line(rods[k],b[k],t[k]);nb[k].setAttribute("cx",f(b[k][0]));nb[k].setAttribute("cy",f(b[k][1]));nt[k].setAttribute("cx",f(t[k][0]));nt[k].setAttribute("cy",f(t[k][1]));
+      if(k<N-1){line(redT[k],t[k],t[k+1]);line(redB[k],b[k],b[k+1]);line(slack[k],t[k],b[k+1]);redT[k].setAttribute("stroke-width",f(p.w));redB[k].setAttribute("stroke-width",f(p.w))}
+      if(k<N-2)line(slack2[k],t[k],b[k+2])}
+    for(var j=0;j<N;j++){var r=N-1-j,side=j%2?-1:1,mx=(b[r][0]+t[r][0])/2,my=(b[r][1]+t[r][1])/2,ex=mx+side*26,ey=my-20,lx=side>0?538:262;
+      leaders[j].setAttribute("points",f(mx)+","+f(my)+" "+f(ex)+","+f(ey)+" "+lx+","+f(ey));
+      labels[j].setAttribute("x",side>0?lx+8:lx-8);labels[j].setAttribute("y",f(ey+4));labels[j].setAttribute("text-anchor",side>0?"start":"end")}}
+  apply(.5);
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var D=4500,t0=null,raf=0,on=true,visible=true,elapsed=0,last=0;
+  function ease(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2}
+  function tick(now){if(!on||!visible||document.hidden){raf=0;return}
+    if(last)elapsed+=now-last;last=now;
+    var ph=(elapsed%(2*D))/D;apply(ease(ph<=1?ph:2-ph));raf=requestAnimationFrame(tick)}
+  function go(){if(!raf&&visible&&!document.hidden){last=0;raf=requestAnimationFrame(tick)}}
+  document.addEventListener("visibilitychange",go);
+  if("IntersectionObserver" in window)new IntersectionObserver(function(e){visible=e[0].isIntersecting;go()}).observe(svg);
+  go();
+})();
+</script>
 </body>
 </html>
