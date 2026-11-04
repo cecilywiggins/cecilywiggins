@@ -84,7 +84,19 @@
   @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(1.25); } }
 
   /* ---------- HERO ---------- */
-  .hero { padding: clamp(2.5rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 4rem); }
+  .hero { padding: clamp(2.5rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 4rem); position: relative; }
+  .hero-bg {
+    position: absolute; inset: -6rem 0 -2rem 0; z-index: 0; pointer-events: none; overflow: hidden;
+    background-image: url("https://d8j0ntlcm91z4.cloudfront.net/user_39d6P5w36hdHudPfiKhndiPa6wN/hf_20261029_173508_5b78c693-1036-4550-890b-63b7138dc390.png");
+    background-size: cover; background-position: right center; opacity: 0.6;
+  }
+  .hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, var(--bg) 6%, rgba(10,10,13,0.55) 46%, rgba(10,10,13,0) 100%),
+      linear-gradient(180deg, transparent 50%, var(--bg) 100%);
+  }
+  .hero > .kicker, .hero > .title, .hero > .lede, .hero > .sub { position: relative; z-index: 1; }
   .kicker {
     font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--mag); margin-bottom: 1.6rem;
@@ -298,6 +310,7 @@
     <!-- HERO -->
     <div class="wrap">
       <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
         <p class="kicker fade">Producer · Creative Director · Los Angeles</p>
         <h1 class="title">
           <span class="row r1"><span class="up">Cecily</span></span>
